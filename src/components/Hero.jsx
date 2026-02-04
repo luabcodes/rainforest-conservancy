@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { FaBars, FaTimes } from "react-icons/fa"; // ícones do hamburguer e fechar
 import heroVideo from "../assets/rainforest3.mp4"
 import textureVideo from "../assets/leaf-texture.mp4"
 import jatiVideo from "../assets/jativideo2.mp4"
@@ -6,6 +7,7 @@ import gftLogo from "../assets/GFTlogo4.png"
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -31,16 +33,35 @@ export default function Home() {
       </video>
 
       <div style={contentLayer}>
-        {/* NAVIGATION MENU */}
+        {/* NAVIGATION MENU RESPONSIVO */}
         <nav style={navStyle}>
-          <ul style={navListStyle}>
-            <li><a href="#hero" style={navLinkStyle}>Home</a></li>
-            <li><a href="#gft" style={navLinkStyle}>GFT Info</a></li>
-            <li><a href="#jatimana" style={navLinkStyle}>Jatimanã Lake</a></li>
-            <li><a href="#metadata" style={navLinkStyle}>On-Chain</a></li>
-            <li><a href="#support" style={navLinkStyle}>Support the Forest</a></li>
-          </ul>
+          {isMobile ? (
+            <div style={mobileNavWrapper}>
+              <div style={hamburgerIcon} onClick={() => setMenuOpen(!menuOpen)}>
+                {menuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
+              </div>
+
+              {menuOpen && (
+                <ul style={mobileNavList}>
+                  <li><a href="#hero" style={navLinkStyle} onClick={() => setMenuOpen(false)}>Home</a></li>
+                  <li><a href="#gft" style={navLinkStyle} onClick={() => setMenuOpen(false)}>GFT Info</a></li>
+                  <li><a href="#jatimana" style={navLinkStyle} onClick={() => setMenuOpen(false)}>Jatimanã Lake</a></li>
+                  <li><a href="#metadata" style={navLinkStyle} onClick={() => setMenuOpen(false)}>On-Chain</a></li>
+                  <li><a href="#support" style={navLinkStyle} onClick={() => setMenuOpen(false)}>Support the Forest</a></li>
+                </ul>
+              )}
+            </div>
+          ) : (
+            <ul style={navListStyle}>
+              <li><a href="#hero" style={navLinkStyle}>Home</a></li>
+              <li><a href="#gft" style={navLinkStyle}>GFT Info</a></li>
+              <li><a href="#jatimana" style={navLinkStyle}>Jatimanã Lake</a></li>
+              <li><a href="#metadata" style={navLinkStyle}>On-Chain</a></li>
+              <li><a href="#support" style={navLinkStyle}>Support the Forest</a></li>
+            </ul>
+          )}
         </nav>
+
 
         {/* HERO VIDEO */}
         <section style={heroVideoSection} id="hero">
@@ -224,53 +245,54 @@ export default function Home() {
               biomes on Earth.
             </p>
 
-            {/* ================= ON-CHAIN METADATA ================= */}
-            <div style={metadataBox}>
-              <h3 style={metaTitle}>On-Chain Transparency</h3>
+            {/* ON-CHAIN METADATA */}
+<div style={metadataBox}>
+  <h3 style={metaTitle}>On-Chain Transparency</h3>
 
-              <div style={metaGrid}>
-                <div style={metaItem}>
-                  <span style={metaLabel}>Contract Address</span>
-                  <span style={metaValue}>
-                    0xc23d925684919c1619f13427817d3fee6c24debb
-                  </span>
-                </div>
+  <div style={metaGrid}>
+    <div style={metaItem}>
+      <h4 style={metaLabel}>Contract Address</h4>
+      <p style={metaValue}>
+        0xc23d925684919c1619f13427817d3fee6c24debb
+      </p>
+    </div>
 
-                <div style={metaItem}>
-                  <span style={metaLabel}>Token Standard</span>
-                  <span style={metaValue}>ERC-721</span>
-                </div>
+    <div style={metaItem}>
+      <h4 style={metaLabel}>Token Standard</h4>
+      <p style={metaValue}>ERC-721</p>
+    </div>
 
-                <div style={metaItem}>
-                  <span style={metaLabel}>Blockchain</span>
-                  <span style={metaValue}>Ethereum (ETH)</span>
-                </div>
+    <div style={metaItem}>
+      <h4 style={metaLabel}>Blockchain</h4>
+      <p style={metaValue}>Ethereum (ETH)</p>
+    </div>
 
-                <div style={metaItem}>
-                  <span style={metaLabel}>Owner Address</span>
-                  <span style={metaValue}>
-                    0x598749188295a79538fc879820ef5c9747ff61b9
-                  </span>
-                </div>
+    <div style={metaItem}>
+      <h4 style={metaLabel}>Owner Address</h4>
+      <p style={metaValue}>
+        0x598749188295a79538fc879820ef5c9747ff61b9
+      </p>
+    </div>
 
-                <div style={metaItem}>
-                  <span style={metaLabel}>Metadata</span>
-                  <a
-                    href="https://metadata.mintable.app/mintable_gasless/40494872365929988429502935789721658141196506675116677701762907237175745074785"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={metaLink}
-                  >
-                    View On-Chain Record ↗
-                  </a>
-                </div>
-              </div>
+    <div style={metaItem}>
+      <h4 style={metaLabel}>Metadata</h4>
+      <a
+        href="https://metadata.mintable.app/mintable_gasless/40494872365929988429502935789721658141196506675116677701762907237175745074785"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={metaLink}
+      >
+        View On-Chain Record ↗
+      </a>
+    </div>
+  </div>
 
-              <p style={tableNote}>
-                This asset leverages blockchain technology to ensure full transparency,
-                immutability, and public verification of ownership and metadata.
-              </p>
-            </div>
+  <p style={tableNote}>
+    This asset leverages blockchain technology to ensure full transparency,
+    immutability, and public verification of ownership and metadata.
+  </p>
+</div>
+
 
           </div>
         </section>
