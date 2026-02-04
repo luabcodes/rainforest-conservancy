@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react"
-import { FaBars, FaTimes } from "react-icons/fa"; // ícones do hamburguer e fechar
-import heroVideo from "../assets/rainforest3.mp4"
-import textureVideo from "../assets/leaf-texture.mp4"
-import jatiVideo from "../assets/jativideo2.mp4"
-import gftLogo from "../assets/GFTlogo4.png"
+import { useEffect, useState } from "react";
+import heroVideo from "../assets/rainforest3.mp4";
+import textureVideo from "../assets/leaf-texture.mp4";
+import jatiVideo from "../assets/jativideo2.mp4";
+import gftLogo from "../assets/GFTlogo4.png";
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768)
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div style={pageWrapper}>
@@ -33,35 +31,16 @@ export default function Home() {
       </video>
 
       <div style={contentLayer}>
-        {/* NAVIGATION MENU RESPONSIVO */}
+        {/* NAVIGATION MENU */}
         <nav style={navStyle}>
-          {isMobile ? (
-            <div style={mobileNavWrapper}>
-              <div style={hamburgerIcon} onClick={() => setMenuOpen(!menuOpen)}>
-                {menuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
-              </div>
-
-              {menuOpen && (
-                <ul style={mobileNavList}>
-                  <li><a href="#hero" style={navLinkStyle} onClick={() => setMenuOpen(false)}>Home</a></li>
-                  <li><a href="#gft" style={navLinkStyle} onClick={() => setMenuOpen(false)}>GFT Info</a></li>
-                  <li><a href="#jatimana" style={navLinkStyle} onClick={() => setMenuOpen(false)}>Jatimanã Lake</a></li>
-                  <li><a href="#metadata" style={navLinkStyle} onClick={() => setMenuOpen(false)}>On-Chain</a></li>
-                  <li><a href="#support" style={navLinkStyle} onClick={() => setMenuOpen(false)}>Support the Forest</a></li>
-                </ul>
-              )}
-            </div>
-          ) : (
-            <ul style={navListStyle}>
-              <li><a href="#hero" style={navLinkStyle}>Home</a></li>
-              <li><a href="#gft" style={navLinkStyle}>GFT Info</a></li>
-              <li><a href="#jatimana" style={navLinkStyle}>Jatimanã Lake</a></li>
-              <li><a href="#metadata" style={navLinkStyle}>On-Chain</a></li>
-              <li><a href="#support" style={navLinkStyle}>Support the Forest</a></li>
-            </ul>
-          )}
+          <ul style={navListStyle}>
+            <li><a href="#hero" style={navLinkStyle}>Home</a></li>
+            <li><a href="#gft" style={navLinkStyle}>GFT Info</a></li>
+            <li><a href="#jatimana" style={navLinkStyle}>Jatimanã Lake</a></li>
+            <li><a href="#metadata" style={navLinkStyle}>On-Chain</a></li>
+            <li><a href="#support" style={navLinkStyle}>Support the Forest</a></li>
+          </ul>
         </nav>
-
 
         {/* HERO VIDEO */}
         <section style={heroVideoSection} id="hero">
@@ -76,28 +55,24 @@ export default function Home() {
         </section>
 
         {/* HERO CONTENT */}
-       <section style={heroContent(isMobile)} id="hero-content">
-  <span style={eyebrowStyle}>
-    Amazon Rainforest Conservation • Digital Transparency • Verified Impact
-  </span>
+        <section style={heroContent(isMobile)} id="hero-content">
+          <span style={eyebrowStyle}>
+            Amazon Rainforest Conservation • Digital Transparency • Verified Impact
+          </span>
 
-  <h1 style={heroTitle(isMobile)}>
-    Protecting the Amazon through transparent, verifiable conservation
-  </h1>
+          <h1 style={heroTitle(isMobile)}>
+            Protecting the Amazon through transparent, verifiable conservation
+          </h1>
 
-  <p style={heroSubtitle}>
-    Rainforest Conservancy is a pioneering initiative dedicated to the long-term protection and regeneration of the Amazon rainforest, one of the most biodiverse and climate-critical ecosystems on Earth. By integrating advanced environmental monitoring, blockchain technology, and verifiable digital frameworks such as the Geo Forest Token (GFT), the project ensures complete transparency, traceable impact, and measurable outcomes for every hectare preserved. Investors and partners gain a unique opportunity to support tangible, high-integrity environmental assets while participating in a new nature-backed economy.
-  </p>
-
-  <p style={heroSubtitle}>
-    Through GFT, preserved forest areas are transformed into auditable, tradeable digital tokens, enabling real-time tracking of carbon sequestration, biodiversity conservation, water cycle regulation, and community empowerment initiatives. Each token represents a verifiable hectare of protected forest, linking financial incentives directly to environmental preservation. This creates a scalable model that aligns investor returns with measurable ecological impact, promoting sustainable development, climate mitigation, and social responsibility.
-  </p>
-
-  <p style={heroSubtitle}>
-    By bridging ecological stewardship with cutting-edge technology, Rainforest Conservancy empowers stakeholders to make meaningful contributions to global conservation while engaging in a transparent, accountable, and innovative investment framework. This initiative not only safeguards critical ecosystems but also pioneers a new standard for ESG-aligned impact investing, demonstrating that protecting the planet can generate real economic, social, and environmental value.
-  </p>
-</section>
-
+          <p style={heroSubtitle}>
+            Rainforest Conservancy is a conservation initiative dedicated to the
+            long-term protection of the Amazon rainforest through measurable,
+            technology-driven environmental stewardship. By connecting preserved
+            forest ecosystems to verifiable digital frameworks such as the Geo
+            Forest Token (GFT), the project enables transparency, accountability,
+            and real-world environmental impact.
+          </p>
+        </section>
 
         {/* GFT INFO */}
         <section style={{ ...section, textAlign: "center" }} id="gft">
@@ -224,13 +199,6 @@ export default function Home() {
               reptiles, birds, and endemic fauna.
             </p>
 
-            <p style={{ ...sectionText, textAlign: "center" }}>
-              This region plays a critical role in maintaining hydrological balance,
-              protecting freshwater reserves, and sustaining traditional riverine and
-              indigenous ecosystems — making it a key asset for long-term environmental
-              resilience.
-            </p>
-
             <p style={{ ...sectionText, textAlign: "center" }} id="metadata">
               Each <strong>GFT (Green Forest Token)</strong> represents <strong>one hectare of preserved rainforest per year</strong>, certified and
               aligned with ecosystem service valuation methodologies. The model assigns an
@@ -245,55 +213,55 @@ export default function Home() {
               biomes on Earth.
             </p>
 
-            {/* ON-CHAIN METADATA */}
-<div style={metadataBox}>
-  <h3 style={metaTitle}>On-Chain Transparency</h3>
+            {/* ================= ON-CHAIN METADATA ================= */}
+            <div style={{ ...metadataBox, marginTop: "60px" }}>
+              <h3 style={{ ...metaTitle, textAlign: "center", marginBottom: "32px" }}>
+                On-Chain Transparency
+              </h3>
 
-  <div style={metaGrid}>
-    <div style={metaItem}>
-      <h4 style={metaLabel}>Contract Address</h4>
-      <p style={metaValue}>
-        0xc23d925684919c1619f13427817d3fee6c24debb
-      </p>
-    </div>
+              <div style={metaGrid}>
+                <div style={metaItem}>
+                  <h4 style={metaLabel}>Contract Address</h4>
+                  <p style={metaValue}>
+                    0xc23d925684919c1619f13427817d3fee6c24debb
+                  </p>
+                </div>
 
-    <div style={metaItem}>
-      <h4 style={metaLabel}>Token Standard</h4>
-      <p style={metaValue}>ERC-721</p>
-    </div>
+                <div style={metaItem}>
+                  <h4 style={metaLabel}>Token Standard</h4>
+                  <p style={metaValue}>ERC-721</p>
+                </div>
 
-    <div style={metaItem}>
-      <h4 style={metaLabel}>Blockchain</h4>
-      <p style={metaValue}>Ethereum (ETH)</p>
-    </div>
+                <div style={metaItem}>
+                  <h4 style={metaLabel}>Blockchain</h4>
+                  <p style={metaValue}>Ethereum (ETH)</p>
+                </div>
 
-    <div style={metaItem}>
-      <h4 style={metaLabel}>Owner Address</h4>
-      <p style={metaValue}>
-        0x598749188295a79538fc879820ef5c9747ff61b9
-      </p>
-    </div>
+                <div style={metaItem}>
+                  <h4 style={metaLabel}>Owner Address</h4>
+                  <p style={metaValue}>
+                    0x598749188295a79538fc879820ef5c9747ff61b9
+                  </p>
+                </div>
 
-    <div style={metaItem}>
-      <h4 style={metaLabel}>Metadata</h4>
-      <a
-        href="https://metadata.mintable.app/mintable_gasless/40494872365929988429502935789721658141196506675116677701762907237175745074785"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={metaLink}
-      >
-        View On-Chain Record ↗
-      </a>
-    </div>
-  </div>
+                <div style={metaItem}>
+                  <h4 style={metaLabel}>Metadata</h4>
+                  <a
+                    href="https://metadata.mintable.app/mintable_gasless/40494872365929988429502935789721658141196506675116677701762907237175745074785"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={metaLink}
+                  >
+                    View On-Chain Record ↗
+                  </a>
+                </div>
+              </div>
 
-  <p style={tableNote}>
-    This asset leverages blockchain technology to ensure full transparency,
-    immutability, and public verification of ownership and metadata.
-  </p>
-</div>
-
-
+              <p style={{ ...tableNote, marginTop: "24px", textAlign: "center" }}>
+                This asset leverages blockchain technology to ensure full transparency,
+                immutability, and public verification of ownership and metadata.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -363,12 +331,12 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
 /* ================= STYLES ================= */
-const pageWrapper = { position: "relative", minHeight: "100vh" }
-const contentLayer = { position: "relative", zIndex: 1 }
+const pageWrapper = { position: "relative", minHeight: "100vh" };
+const contentLayer = { position: "relative", zIndex: 1 };
 const textureVideoStyle = isMobile => ({
   position: "fixed",
   inset: 0,
@@ -377,105 +345,46 @@ const textureVideoStyle = isMobile => ({
   objectFit: "cover",
   opacity: isMobile ? 0.06 : 0.1,
   zIndex: -1
-})
-const heroVideoSection = { height: "100svh", overflow: "hidden" }
-const heroVideoStyle = { width: "100%", height: "100%", objectFit: "cover" }
+});
+const heroVideoSection = { height: "100svh", overflow: "hidden" };
+const heroVideoStyle = { width: "100%", height: "100%", objectFit: "cover" };
 const heroContent = isMobile => ({
   maxWidth: "900px",
   margin: "0 auto",
   padding: isMobile ? "80px 20px" : "150px 24px",
   textAlign: "center"
-})
-const eyebrowStyle = { fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#1F7A4D", marginBottom: "20px" }
-const heroTitle = isMobile => ({ fontSize: isMobile ? "2.2rem" : "3.2rem", marginBottom: "24px" })
-const heroSubtitle = { lineHeight: 1.8, fontSize: "1.05rem" }
-const section = { maxWidth: "1080px", margin: "0 auto", padding: "120px 24px" }
-const altSection = { ...section, background: "rgba(255,255,255,0.9)" }
-const sectionTitle = { fontSize: "2rem", marginBottom: "24px" }
-const sectionText = { maxWidth: "760px", lineHeight: 1.8, marginBottom: "24px" }
-const gftLogoStyle = { display: "block", margin: "0 auto 56px", maxWidth: "680px", filter: "drop-shadow(0 18px 40px rgba(0,0,0,.18))" }
-const jatiVideoWrapper = { borderRadius: "20px", overflow: "hidden", marginBottom: "48px" }
-const jatiVideoStyle = { width: "100%", height: "420px", objectFit: "cover" }
-const metadataBox = { marginTop: "48px" }
-const metaTitle = { fontSize: "1.4rem", marginBottom: "24px" }
-const metaGrid = { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }
-const metaItem = { padding: "18px", borderRadius: "14px", background: "rgba(0,0,0,0.03)", border: "1px solid rgba(0,0,0,0.08)" }
-const metaLabel = { fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.12em", opacity: 0.6 }
-const metaValue = { marginTop: "6px", fontSize: "0.9rem", wordBreak: "break-all" }
-const metaLink = { marginTop: "6px", display: "inline-block", color: "#1F7A4D", fontWeight: 600, textDecoration: "none" }
-const tableNote = { marginTop: "16px", fontSize: "0.85rem", opacity: 0.6 }
+});
+const eyebrowStyle = { fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#1F7A4D", marginBottom: "20px" };
+const heroTitle = isMobile => ({ fontSize: isMobile ? "2.2rem" : "3.2rem", marginBottom: "24px" });
+const heroSubtitle = { lineHeight: 1.8, fontSize: "1.05rem" };
+const section = { maxWidth: "1080px", margin: "0 auto", padding: "120px 24px" };
+const altSection = { ...section, background: "rgba(255,255,255,0.9)" };
+const sectionTitle = { fontSize: "2rem", marginBottom: "24px" };
+const sectionText = { maxWidth: "760px", lineHeight: 1.8, marginBottom: "24px" };
+const gftLogoStyle = { display: "block", margin: "0 auto 56px", maxWidth: "680px", filter: "drop-shadow(0 18px 40px rgba(0,0,0,.18))" };
+const jatiVideoWrapper = { borderRadius: "20px", overflow: "hidden", marginBottom: "48px" };
+const jatiVideoStyle = { width: "100%", height: "420px", objectFit: "cover" };
+const metadataBox = { marginTop: "48px" };
+const metaTitle = { fontSize: "1.4rem", marginBottom: "24px" };
+const metaGrid = { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "28px", marginTop: "24px" };
+const metaItem = { padding: "24px", borderRadius: "16px", background: "rgba(31, 122, 77, 0.05)", border: "1px solid rgba(31, 122, 77, 0.15)", boxShadow: "0 8px 20px rgba(0,0,0,0.08)", display: "flex", flexDirection: "column", gap: "10px" };
+const metaLabel = { fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.12em", opacity: 0.75, margin: 0 };
+const metaValue = { margin: 0, fontSize: "0.95rem", wordBreak: "break-all", color: "#1F7A4D", fontWeight: 500 };
+const metaLink = { display: "inline-block", color: "#1F7A4D", fontWeight: 600, textDecoration: "none", transition: "color 0.3s ease" };
+const tableNote = { marginTop: "16px", fontSize: "0.85rem", opacity: 0.6 };
 
-/* ================= SUPPORT STYLES ================= */
-const supportSection = {
-  maxWidth: "1080px",
-  margin: "0 auto",
-  padding: "120px 24px",
-  textAlign: "center",
-  backgroundColor: "rgba(240, 255, 245, 0.95)",
-  borderRadius: "20px",
-  boxShadow: "0 12px 36px rgba(0,0,0,0.08)"
-}
-const supportButton = {
-  display: "inline-block",
-  marginTop: "32px",
-  padding: "14px 36px",
-  backgroundColor: "#1F7A4D",
-  color: "#fff",
-  fontWeight: 600,
-  fontSize: "1rem",
-  borderRadius: "999px",
-  textDecoration: "none",
-  boxShadow: "0 6px 18px rgba(31,122,77,0.25)",
-  transition: "transform 0.2s ease, background-color 0.3s ease",
-  cursor: "pointer"
-}
+const supportSection = { maxWidth: "1080px", margin: "0 auto", padding: "120px 24px", textAlign: "center", backgroundColor: "rgba(240, 255, 245, 0.95)", borderRadius: "20px", boxShadow: "0 12px 36px rgba(0,0,0,0.08)" };
+const supportButton = { display: "inline-block", marginTop: "32px", padding: "14px 36px", backgroundColor: "#1F7A4D", color: "#fff", fontWeight: 600, fontSize: "1rem", borderRadius: "999px", textDecoration: "none", boxShadow: "0 6px 18px rgba(31,122,77,0.25)", transition: "transform 0.2s ease, backgroundColor 0.3s ease", cursor: "pointer" };
 
-/* ================= NAVIGATION STYLES ================= */
-const navStyle = { position: "fixed", top: 0, left: 0, width: "100%", background: "rgba(255,255,255,0.95)", zIndex: 1000 }
-const navListStyle = { display: "flex", justifyContent: "center", listStyle: "none", padding: "12px 0", margin: 0 }
-const navLinkStyle = { margin: "0 20px", color: "#1F7A4D", fontWeight: 600, textDecoration: "none" }
+const navStyle = { position: "fixed", top: 0, left: 0, width: "100%", background: "rgba(255,255,255,0.95)", zIndex: 1000 };
+const navListStyle = { display: "flex", justifyContent: "center", listStyle: "none", padding: "12px 0", margin: 0 };
+const navLinkStyle = { margin: "0 20px", color: "#1F7A4D", fontWeight: 600, textDecoration: "none" };
 
-/* ================= FOOTER STYLES ================= */
-const footerStyle = {
-  backgroundColor: "#1F7A4D",
-  color: "#fff",
-  padding: "60px 24px 24px",
-  borderTopLeftRadius: "20px",
-  borderTopRightRadius: "20px",
-  marginTop: "80px"
-}
-const footerContent = {
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "space-between",
-  maxWidth: "1080px",
-  margin: "0 auto 24px"
-}
-const footerSection = {
-  flex: "1 1 250px",
-  marginBottom: "24px"
-}
-const footerHeading = {
-  fontSize: "1.2rem",
-  marginBottom: "16px",
-  fontWeight: 700
-}
-const footerText = {
-  fontSize: "0.95rem",
-  lineHeight: 1.6
-}
-const footerLinks = {
-  listStyle: "none",
-  padding: 0,
-  margin: 0
-}
-const footerLink = {
-  color: "#fff",
-  textDecoration: "none",
-  display: "block",
-  marginBottom: "8px",
-  transition: "color 0.2s ease",
-  cursor: "pointer"
-}
-const footerLinkHoverStyle = { color: "#A6FFD3" };
+const footerStyle = { backgroundColor: "#1F7A4D", color: "#fff", padding: "60px 24px 24px", borderTopLeftRadius: "20px", borderTopRightRadius: "20px", marginTop: "80px" };
+const footerContent = { display: "flex", flexWrap: "wrap", justifyContent: "space-between", maxWidth: "1080px", margin: "0 auto 24px" };
+const footerSection = { flex: "1 1 250px", marginBottom: "24px" };
+const footerHeading = { fontSize: "1.2rem", marginBottom: "16px", fontWeight: 700 };
+const footerText = { fontSize: "0.95rem", lineHeight: 1.6 };
+const footerLinks = { listStyle: "none", padding: 0, margin: 0 };
+const footerLink = { color: "#fff", textDecoration: "none", display: "block", marginBottom: "8px", transition: "color 0.2s ease", cursor: "pointer" };
 const footerBottom = { borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: "16px", textAlign: "center", fontSize: "0.85rem" };
