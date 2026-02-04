@@ -55,24 +55,28 @@ export default function Home() {
         </section>
 
         {/* HERO CONTENT */}
-        <section style={heroContent(isMobile)} id="hero-content">
-          <span style={eyebrowStyle}>
-            Amazon Rainforest Conservation • Digital Transparency • Verified Impact
-          </span>
+       <section style={heroContent(isMobile)} id="hero-content">
+  <span style={eyebrowStyle}>
+    Amazon Rainforest Conservation • Digital Transparency • Verified Impact
+  </span>
 
-          <h1 style={heroTitle(isMobile)}>
-            Protecting the Amazon through transparent, verifiable conservation
-          </h1>
+  <h1 style={heroTitle(isMobile)}>
+    Protecting the Amazon through transparent, verifiable conservation
+  </h1>
 
-          <p style={heroSubtitle}>
-            Rainforest Conservancy is a conservation initiative dedicated to the
-            long-term protection of the Amazon rainforest through measurable,
-            technology-driven environmental stewardship. By connecting preserved
-            forest ecosystems to verifiable digital frameworks such as the Geo
-            Forest Token (GFT), the project enables transparency, accountability,
-            and real-world environmental impact.
-          </p>
-        </section>
+  <p style={heroSubtitle}>
+    Rainforest Conservancy is a pioneering initiative dedicated to the long-term protection and regeneration of the Amazon rainforest, one of the most biodiverse and climate-critical ecosystems on Earth. By integrating advanced environmental monitoring, blockchain technology, and verifiable digital frameworks such as the Geo Forest Token (GFT), the project ensures complete transparency, traceable impact, and measurable outcomes for every hectare preserved. Investors and partners gain a unique opportunity to support tangible, high-integrity environmental assets while participating in a new nature-backed economy.
+  </p>
+
+  <p style={heroSubtitle}>
+    Through GFT, preserved forest areas are transformed into auditable, tradeable digital tokens, enabling real-time tracking of carbon sequestration, biodiversity conservation, water cycle regulation, and community empowerment initiatives. Each token represents a verifiable hectare of protected forest, linking financial incentives directly to environmental preservation. This creates a scalable model that aligns investor returns with measurable ecological impact, promoting sustainable development, climate mitigation, and social responsibility.
+  </p>
+
+  <p style={heroSubtitle}>
+    By bridging ecological stewardship with cutting-edge technology, Rainforest Conservancy empowers stakeholders to make meaningful contributions to global conservation while engaging in a transparent, accountable, and innovative investment framework. This initiative not only safeguards critical ecosystems but also pioneers a new standard for ESG-aligned impact investing, demonstrating that protecting the planet can generate real economic, social, and environmental value.
+  </p>
+</section>
+
 
         {/* GFT INFO */}
         <section style={{ ...section, textAlign: "center" }} id="gft">
