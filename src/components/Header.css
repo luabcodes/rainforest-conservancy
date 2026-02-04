@@ -1,0 +1,20 @@
+/* ===== HEADER RESPONSIVE ===== */
+
+.desktop-nav {
+  display: flex;
+}
+
+.hamburger {
+  display: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
