@@ -21,9 +21,11 @@ body {
   margin: 0;
   padding: 0;
   min-width: 320px;
-  min-height: 100dvh;
+  min-height: 100svh; /* altura da viewport ajustada para mobile moderno */
   background-color: #242424;
   color: rgba(255, 255, 255, 0.87);
+  overflow-x: hidden; /* evita scroll horizontal */
+  box-sizing: border-box;
 }
 
 /* ================= LINKS ================= */
@@ -41,6 +43,7 @@ a:hover {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin: 0.5em 0;
 }
 
 /* ================= BUTTONS ================= */
@@ -55,6 +58,7 @@ button {
   color: #ffffff;
   cursor: pointer;
   transition: border-color 0.25s, background-color 0.25s;
+  flex-shrink: 0;
 }
 
 button:hover {
@@ -67,6 +71,143 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+/* ================= HERO / VIDEO ================= */
+.hero-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100svh; /* ocupa toda a tela, mesmo em mobile */
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem; /* aumenta espaço em mobile */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.navbar button {
+  margin: 0.3rem;
+  flex: 1 1 auto;
+  min-width: 90px;
+  max-width: 250px; /* evita esticar demais no mobile */
+}
+
+/* ================= NAVBAR HAMBURGUER MOBILE ================= */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  color: #1F7A4D;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #1F7A4D;
+  font-weight: 600;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, transform 0.3s ease;
+    transform: translateY(-20px);
+  }
+
+  .nav-links.open {
+    max-height: 500px; /* ajusta conforme a quantidade de itens */
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    padding: 1rem 0;
+    text-align: center;
+  }
+}
+
+/* ================= LOGO / GFT ================= */
+.logo {
+  max-width: 90%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
+/* ================= MEDIA QUERIES MOBILE ================= */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero-overlay {
+    padding: 2.5rem 1.5rem; /* mais espaçamento no mobile */
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .navbar button {
+    width: 90%;
+    margin: 0.4rem 0;
+  }
+
+  .hero-video {
+    max-height: 100svh;
+  }
+
+  .logo {
+    max-width: 85%;
+  }
+}
+
 /* ================= MOBILE SAFETY ================= */
 /* evita bugs de fundo branco no Safari/iOS */
 @supports (-webkit-touch-callout: none) {
@@ -74,4 +215,14 @@ button:focus-visible {
   body {
     background-color: #242424;
   }
+}
+.texture-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.08; /* ajuste fino */
+  pointer-events: none;
 }

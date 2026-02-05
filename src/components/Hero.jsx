@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa"; // ícones para o hamburger
 import heroVideo from "../assets/rainforest3.mp4";
-import textureVideo from "../assets/leaf-texture.mp4";
+
 import jatiVideo from "../assets/jativideo2.mp4";
 import gftLogo from "../assets/GFTlogo4.png";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -14,32 +16,45 @@ export default function Home() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   return (
     <div style={pageWrapper}>
       {/* SCROLL SUAVE */}
-      <style>
-        {`
-          html {
-            scroll-behavior: smooth;
-          }
-        `}
-      </style>
+      <style>{`html { scroll-behavior: smooth; }`}</style>
 
       {/* BACKGROUND TEXTURE */}
       <video autoPlay loop muted playsInline style={textureVideoStyle(isMobile)}>
-        <source src={textureVideo} type="video/mp4" />
+        <source src="/leaf-texture1.mp4" type="video/mp4" />
       </video>
 
       <div style={contentLayer}>
         {/* NAVIGATION MENU */}
         <nav style={navStyle}>
-          <ul style={navListStyle}>
-            <li><a href="#hero" style={navLinkStyle}>Home</a></li>
-            <li><a href="#gft" style={navLinkStyle}>GFT Info</a></li>
-            <li><a href="#jatimana" style={navLinkStyle}>Jatimanã Lake</a></li>
-            <li><a href="#metadata" style={navLinkStyle}>On-Chain</a></li>
-            <li><a href="#support" style={navLinkStyle}>Support the Forest</a></li>
-          </ul>
+          {isMobile ? (
+            <>
+              <button onClick={toggleMenu} style={hamburgerStyle}>
+                {menuOpen ? <FaTimes /> : <FaBars />}
+              </button>
+              {menuOpen && (
+                <ul style={navListStyleMobile}>
+                  <li><a href="#hero" style={navLinkStyle} onClick={toggleMenu}>Home</a></li>
+                  <li><a href="#gft" style={navLinkStyle} onClick={toggleMenu}>GFT Info</a></li>
+                  <li><a href="#jatimana" style={navLinkStyle} onClick={toggleMenu}>Jatimanã Lake</a></li>
+                  <li><a href="#metadata" style={navLinkStyle} onClick={toggleMenu}>On-Chain</a></li>
+                  <li><a href="#support" style={navLinkStyle} onClick={toggleMenu}>Support the Forest</a></li>
+                </ul>
+              )}
+            </>
+          ) : (
+            <ul style={navListStyle}>
+              <li><a href="#hero" style={navLinkStyle}>Home</a></li>
+              <li><a href="#gft" style={navLinkStyle}>GFT Info</a></li>
+              <li><a href="#jatimana" style={navLinkStyle}>Jatimanã Lake</a></li>
+              <li><a href="#metadata" style={navLinkStyle}>On-Chain</a></li>
+              <li><a href="#support" style={navLinkStyle}>Support the Forest</a></li>
+            </ul>
+          )}
         </nav>
 
         {/* HERO VIDEO */}
@@ -65,13 +80,41 @@ export default function Home() {
           </h1>
 
           <p style={heroSubtitle}>
-            Rainforest Conservancy is a conservation initiative dedicated to the
-            long-term protection of the Amazon rainforest through measurable,
-            technology-driven environmental stewardship. By connecting preserved
-            forest ecosystems to verifiable digital frameworks such as the Geo
-            Forest Token (GFT), the project enables transparency, accountability,
-            and real-world environmental impact.
-          </p>
+  The Amazon rainforest, spanning over 5.5 million square kilometers, is one of the
+  most biodiverse and climate-critical regions on Earth. It regulates global carbon
+  cycles, produces approximately 20 percent of the planet's oxygen, and sustains
+  countless indigenous and local communities. Yet, deforestation, illegal logging,
+  and land conversion have eroded nearly one-fifth of this vital ecosystem over
+  the past fifty years. Rainforest Conservancy tackles this urgent crisis by
+  implementing a measurable, technology-driven conservation framework that
+  safeguards forests while generating tangible environmental and financial value.
+</p>
+
+<p style={heroSubtitle}>
+  Through the Geo Forest Token (GFT), Rainforest Conservancy converts preserved
+  forest areas into verifiable digital assets. Leveraging blockchain technology
+  for transparency, smart contracts for accountability, and satellite and
+  AI-driven ecosystem monitoring, each GFT-backed project represents one hectare
+  of protected rainforest per year. These assets are fully auditable, georeferenced,
+  and tradable, providing investors with direct connection to measurable conservation
+  outcomes. By integrating ecological impact with innovative digital frameworks,
+  the initiative creates a scalable, high-integrity platform at the forefront of
+  climate finance, regenerative economics, and sustainable investment.
+</p>
+
+<p style={heroSubtitle}>
+  Investors and partners benefit from a comprehensive strategy that supports
+  carbon sequestration, biodiversity conservation, water cycle protection,
+  and local community empowerment while delivering quantifiable environmental
+  returns. Rainforest Conservancy ensures full transparency through on-chain
+  verification and regular environmental reporting, providing confidence in the
+  measurable results of each project. By combining advanced technology, sustainable
+  business models, and community engagement, this initiative demonstrates how
+  strategic environmental stewardship can deliver both lasting ecological impact
+  and meaningful economic opportunity.
+</p>
+
+
         </section>
 
         {/* GFT INFO */}
@@ -379,6 +422,10 @@ const supportButton = { display: "inline-block", marginTop: "32px", padding: "14
 const navStyle = { position: "fixed", top: 0, left: 0, width: "100%", background: "rgba(255,255,255,0.95)", zIndex: 1000 };
 const navListStyle = { display: "flex", justifyContent: "center", listStyle: "none", padding: "12px 0", margin: 0 };
 const navLinkStyle = { margin: "0 20px", color: "#1F7A4D", fontWeight: 600, textDecoration: "none" };
+
+// Hamburger mobile menu styles
+const hamburgerStyle = { fontSize: "1.8rem", color: "#1F7A4D", background: "none", border: "none", cursor: "pointer", position: "absolute", top: "14px", right: "20px", zIndex: 1100 };
+const navListStyleMobile = { display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", marginTop: "60px", listStyle: "none", padding: 0 };
 
 const footerStyle = { backgroundColor: "#1F7A4D", color: "#fff", padding: "60px 24px 24px", borderTopLeftRadius: "20px", borderTopRightRadius: "20px", marginTop: "80px" };
 const footerContent = { display: "flex", flexWrap: "wrap", justifyContent: "space-between", maxWidth: "1080px", margin: "0 auto 24px" };
